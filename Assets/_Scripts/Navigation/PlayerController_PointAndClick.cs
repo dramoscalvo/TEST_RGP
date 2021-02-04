@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class PlayerController_PointAndClick : MonoBehaviour
 {
     private const string IS_MOVING = "isMoving";
-    private const string DOOR_TRIGGER = "DoorTriggered";
+
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
+    
     private Ray rayCameraToPoint;
     private bool isFloorHit;
 
@@ -21,7 +22,10 @@ public class PlayerController_PointAndClick : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(Input.GetMouseButton(0));
+        CharacterMovement();
+    }
+    void CharacterMovement (){
+
         rayCameraToPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButton(0)) {
                 RaycastHit hit;
