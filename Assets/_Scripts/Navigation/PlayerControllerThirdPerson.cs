@@ -14,9 +14,10 @@ public class PlayerControllerThirdPerson : MonoBehaviour
     [SerializeField]
     private float speed;
     private Plane plane;
+    private Vector3 targetPosition;
+    private Vector3 clickableTargetPosition;
+    private bool isSelection;
     
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,22 +26,26 @@ public class PlayerControllerThirdPerson : MonoBehaviour
         plane = new Plane(Vector3.up, 0);
     }
 
+    private void Update() {
+        SelectTarget();
+        CancelSelectedTarget();
+    }
+
     private void FixedUpdate() 
     {
-        RotateCharacter();
-        MoveCharacter();
-        
+        RotateCharacterToTarget();
+        MoveCharacterNoSelection();  
     }
 
     /// <summary>
-    /// Method to move the character on plane without rotation
+    /// Method to move the character on plane without rotation to follow the mouse
     /// </summary>
-    private void MoveCharacter() {
+    private void MoveCharacterNoSelection() {
         
         float horizontal = Input.GetAxisRaw("Horizontal") ;
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 mousePositionOnWorld = Vector3.zero;
-        Vector3 targetPosition;
+        
         Vector3 currentPosition;
         float movementSpeed;
         Vector3 keyboardInput = Vector3.zero;
@@ -56,10 +61,8 @@ public class PlayerControllerThirdPerson : MonoBehaviour
         movementSpeed = speed * Time.fixedDeltaTime;
         characterRotation = _rigidBody.transform.eulerAngles.y;
         keyboardInputInLocals = RotateVector(keyboardInput, characterRotation, Vector3.up);
-        
         targetPosition = currentPosition + keyboardInputInLocals;
-        
-
+         
         if(keyboardInputInLocals == Vector3.zero){
             desiredPosition = _rigidBody.position;
         }else{
@@ -72,16 +75,22 @@ public class PlayerControllerThirdPerson : MonoBehaviour
     /// <summary>
     /// Method to rotate character to constantly look at mouse pointer
     /// </summary>
-    private void RotateCharacter(){
+    private void RotateCharacterToTarget(){
 
         Vector3 mousePositionOnWorld = Vector3.zero;
-        Vector3 targetPosition;
+        Vector3 targetPosition = Vector3.zero;
         Vector3 currentForwardDirection;
         float rotationSpeed;
         Quaternion rotation = Quaternion.identity;
         
         mousePositionOnWorld = GetMousePosition();
-        targetPosition = mousePositionOnWorld - _rigidBody.position;
+
+        if(!isSelection){
+            targetPosition = mousePositionOnWorld - _rigidBody.position;
+        } else{
+            targetPosition = clickableTargetPosition - _rigidBody.position;   
+        }
+
         currentForwardDirection = _rigidBody.transform.forward;
         rotationSpeed = turnSpeed * Time.fixedDeltaTime;
 
@@ -121,12 +130,42 @@ public class PlayerControllerThirdPerson : MonoBehaviour
 
         vector = Quaternion.AngleAxis(angle, rotationAxis) * vector;
         return vector;
-
-
     }
-    
+
     /// <summary>
-    /// DEPRECATED Reflects a point across a line perpendicular to the lined formed by two points
+    /// Gets the position of the clicked target object
+    /// </summary>
+    void SelectTarget(){
+        
+        Ray rayCameraToPoint;
+        bool isTargetHit;
+
+        rayCameraToPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0)) {
+                RaycastHit hit;
+                isTargetHit = Physics.Raycast(rayCameraToPoint, out hit, 100);
+                if (isTargetHit && hit.rigidbody.tag =="Target") {         
+                    clickableTargetPosition = hit.rigidbody.position;
+                    isSelection = true;
+                }
+                
+        }
+    }
+
+    /// <summary>
+    /// Gets the position of the clicked target object
+    /// </summary>
+    void CancelSelectedTarget(){
+        
+        if(Input.GetKeyDown(KeyCode.Q)){
+            isSelection = false;
+        }
+    }
+
+
+
+    /// <summary>
+    /// DEPRECATED!! - Reflects a point across a line perpendicular to the lined formed by two points
     /// </summary>
     /// <param name="reflectPivot">Intersection point between reflection line and the perpendicular</param>
     /// <param name="pointToReflect">Point to be reflected</param>

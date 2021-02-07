@@ -36,12 +36,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Navigation\DoorControler.cs" />
+     <Compile Include="Assets\_Scripts\Behaviors\DoorControler.cs" />
      <Compile Include="Assets\_Scripts\Navigation\PlayerControllerThirdPerson.cs" />
      <Compile Include="Assets\_Scripts\ImpulsoVSFuerza\ApplyImpulse.cs" />
      <Compile Include="Assets\_Scripts\ImpulsoVSFuerza\ApplyForce.cs" />
      <Compile Include="Assets\Asset Unlock - 3D Prototyping\Scripts\ThirdPersonController.cs" />
      <Compile Include="Assets\_Scripts\Navigation\PlayerControllerPointAndClick.cs" />
+     <Compile Include="Assets\_Scripts\Behaviors\TargetControler.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

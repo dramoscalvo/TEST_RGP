@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 726055353}
   - component: {fileID: 726055352}
   - component: {fileID: 726055351}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,31 +861,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 174501286}
     m_Modifications:
-    - target: {fileID: 4081121397707479960, guid: bf3cbdf3444305545bbbd08376f91d04,
-        type: 3}
-      propertyPath: floor
-      value: 
-      objectReference: {fileID: 538142415}
-    - target: {fileID: 4081121397707479960, guid: bf3cbdf3444305545bbbd08376f91d04,
-        type: 3}
-      propertyPath: turnSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988487097947740428, guid: bf3cbdf3444305545bbbd08376f91d04,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988487097947740428, guid: bf3cbdf3444305545bbbd08376f91d04,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988487097947740428, guid: bf3cbdf3444305545bbbd08376f91d04,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7988487097947740466, guid: bf3cbdf3444305545bbbd08376f91d04,
         type: 3}
       propertyPath: m_RootOrder
@@ -1055,7 +1030,7 @@ GameObject:
   - component: {fileID: 982927587}
   - component: {fileID: 982927586}
   - component: {fileID: 982927585}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1126,7 @@ GameObject:
   - component: {fileID: 1068010105}
   - component: {fileID: 1068010104}
   - component: {fileID: 1068010103}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1222,7 @@ GameObject:
   - component: {fileID: 1385370419}
   - component: {fileID: 1385370418}
   - component: {fileID: 1385370417}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,12 +1318,12 @@ GameObject:
   - component: {fileID: 1386628983}
   - component: {fileID: 1386628982}
   - component: {fileID: 1386628981}
-  - component: {fileID: 1386628984}
   - component: {fileID: 1386628985}
+  - component: {fileID: 1386628984}
   - component: {fileID: 1386628986}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,7 +1416,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1452,7 +1427,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386628979}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
@@ -1470,10 +1445,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386628979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86cabce8e4bdbcc4c80fefc1760890a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 71f8039253122e94f9a2c02cf9ed6333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constForce: 10
+  notSelectedMaterial: {fileID: 2100000, guid: c7ba1f44961f316469701cf3fdfc5388, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 0779e9bfb329f0444bc41583d4c67fc3, type: 2}
 --- !u!1 &1386772419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1883,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1637675034}
     - target: {fileID: 3407869832318951215, guid: 5c4c8dcc12aea744a8fd42b64f45aced,
         type: 3}
       propertyPath: m_Size.x
@@ -2099,7 +2075,7 @@ GameObject:
   - component: {fileID: 1655744425}
   - component: {fileID: 1655744424}
   - component: {fileID: 1655744423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2290,7 +2266,7 @@ GameObject:
   - component: {fileID: 1733981119}
   - component: {fileID: 1733981118}
   - component: {fileID: 1733981117}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2514,7 +2490,7 @@ GameObject:
   - component: {fileID: 1851743159}
   - component: {fileID: 1851743158}
   - component: {fileID: 1851743157}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
